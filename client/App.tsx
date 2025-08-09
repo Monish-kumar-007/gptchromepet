@@ -6,6 +6,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import Layout from "@/components/Layout";
 
 // Import all pages
@@ -23,26 +24,28 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Layout>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/admission" element={<Admission />} />
-            <Route path="/departments" element={<Departments />} />
-            <Route path="/staff" element={<Staff />} />
-            <Route path="/gallery" element={<Gallery />} />
-            <Route path="/committee" element={<Committee />} />
-            <Route path="/placement" element={<Placement />} />
-            <Route path="/contact" element={<Contact />} />
-            {/* Catch-all route for 404 */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Layout>
-      </BrowserRouter>
-    </TooltipProvider>
+    <ThemeProvider defaultTheme="light" storageKey="gpc-theme">
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Layout>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/admission" element={<Admission />} />
+              <Route path="/departments" element={<Departments />} />
+              <Route path="/staff" element={<Staff />} />
+              <Route path="/gallery" element={<Gallery />} />
+              <Route path="/committee" element={<Committee />} />
+              <Route path="/placement" element={<Placement />} />
+              <Route path="/contact" element={<Contact />} />
+              {/* Catch-all route for 404 */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Layout>
+        </BrowserRouter>
+      </TooltipProvider>
+    </ThemeProvider>
   </QueryClientProvider>
 );
 
