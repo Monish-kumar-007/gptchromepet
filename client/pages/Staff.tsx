@@ -296,7 +296,7 @@ export default function Staff() {
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-6">
             Meet our dedicated team of experienced educators and support staff committed to your academic success
           </p>
-          <div className="flex justify-center space-x-8 text-sm text-gray-600 dark:text-gray-400">
+          <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-600 dark:text-gray-400">
             <div className="flex items-center">
               <Award className="h-4 w-4 mr-2 text-indigo-600" />
               <span>{totalStaff} Total Faculty & Staff</span>
@@ -309,21 +309,21 @@ export default function Staff() {
         </div>
 
         {/* Department Tabs */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
+        <div className="flex flex-wrap justify-center gap-3 mb-8">
           {Object.entries(staffData).map(([key, dept]) => (
             <Button
               key={key}
               variant={selectedDept === key ? "default" : "outline"}
-              className={`h-auto p-4 flex flex-col items-center space-y-2 transition-all duration-300 ${
+              className={`h-auto px-4 py-3 flex flex-col items-center justify-center min-w-[140px] transition-all duration-300 ${
                 selectedDept === key 
-                  ? `bg-gradient-to-br ${dept.color} text-white shadow-lg` 
-                  : "hover:shadow-md"
+                  ? `bg-gradient-to-br ${dept.color} text-white shadow-lg transform scale-105` 
+                  : "hover:shadow-md hover:scale-102"
               }`}
               onClick={() => setSelectedDept(key)}
             >
-              <span className="text-2xl">{dept.icon}</span>
-              <span className="text-xs text-center leading-tight">{dept.title}</span>
-              <Badge variant={selectedDept === key ? "secondary" : "outline"} className="text-xs">
+              <span className="text-xl mb-1">{dept.icon}</span>
+              <span className="text-xs text-center leading-tight font-medium">{dept.title}</span>
+              <Badge variant={selectedDept === key ? "secondary" : "outline"} className="text-xs mt-1">
                 {dept.staff.length}
               </Badge>
             </Button>
@@ -344,78 +344,86 @@ export default function Staff() {
         </div>
 
         {/* Department Header */}
-        <Card className="mb-8 shadow-lg border-0">
-          <CardHeader className={`bg-gradient-to-r ${staffData[selectedDept]?.color} text-white rounded-t-lg`}>
+        <Card className="mb-8 shadow-xl border-0 overflow-hidden">
+          <CardHeader className={`bg-gradient-to-r ${staffData[selectedDept]?.color} text-white`}>
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
                 <div className="text-4xl">{staffData[selectedDept]?.icon}</div>
                 <div>
-                  <CardTitle className="text-2xl">{staffData[selectedDept]?.title}</CardTitle>
-                  <p className="text-white/90">{filteredStaff.length} Faculty Members</p>
+                  <CardTitle className="text-2xl font-bold">{staffData[selectedDept]?.title}</CardTitle>
+                  <p className="text-white/90 text-lg">{filteredStaff.length} Faculty Members</p>
                 </div>
               </div>
             </div>
           </CardHeader>
         </Card>
 
-        {/* Staff Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Staff Grid with Equal Heights */}
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
           {filteredStaff.map((member, index) => (
-            <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-indigo-200 dark:hover:border-indigo-700 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
-              <CardContent className="p-6">
-                {/* Profile Image Placeholder */}
-                <div className="relative mb-6">
-                  <div className="w-24 h-24 bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-600 dark:to-gray-700 rounded-full mx-auto flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
-                    <Users className="h-12 w-12 text-gray-500 dark:text-gray-400" />
+            <Card key={index} className="group hover:shadow-2xl transition-all duration-500 border-2 hover:border-indigo-200 dark:hover:border-indigo-700 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm hover:-translate-y-2 h-full flex flex-col">
+              <CardContent className="p-6 flex flex-col h-full">
+                {/* Profile Section - Fixed Height */}
+                <div className="flex flex-col items-center mb-6">
+                  <div className="relative mb-4">
+                    <div className="w-20 h-20 bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-600 dark:to-gray-700 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <Users className="h-10 w-10 text-gray-500 dark:text-gray-400" />
+                    </div>
+                    <div className={`absolute -bottom-2 left-1/2 transform -translate-x-1/2 px-2 py-1 bg-gradient-to-r ${staffData[selectedDept]?.color} text-white text-xs rounded-full shadow-md whitespace-nowrap`}>
+                      {member.occupation}
+                    </div>
                   </div>
-                  <div className={`absolute -bottom-2 left-1/2 transform -translate-x-1/2 px-3 py-1 bg-gradient-to-r ${staffData[selectedDept]?.color} text-white text-xs rounded-full shadow-md`}>
-                    {member.occupation}
-                  </div>
-                </div>
-
-                {/* Member Info */}
-                <div className="text-center space-y-3">
-                  <h3 className="font-bold text-lg text-gray-900 dark:text-white leading-tight">
+                  
+                  <h3 className="font-bold text-lg text-gray-900 dark:text-white leading-tight text-center min-h-[3.5rem] flex items-center">
                     {member.name}
                   </h3>
-                  
-                  <div className="space-y-2">
+                </div>
+
+                {/* Information Section - Flexible Height */}
+                <div className="flex-1 space-y-4">
+                  {/* Subject and Education */}
+                  <div className="text-center space-y-2">
                     <div className="flex items-center justify-center text-sm text-indigo-600 dark:text-indigo-400">
-                      <BookOpen className="h-4 w-4 mr-2" />
-                      {member.subject}
+                      <BookOpen className="h-4 w-4 mr-2 flex-shrink-0" />
+                      <span className="truncate">{member.subject}</span>
                     </div>
                     
-                    <Badge variant="outline" className="text-xs">
-                      {member.education}
-                    </Badge>
+                    <div className="flex justify-center">
+                      <Badge variant="outline" className="text-xs">
+                        {member.education}
+                      </Badge>
+                    </div>
                     
                     <div className="text-sm text-gray-600 dark:text-gray-400">
                       <span className="font-medium">{member.experience}</span> Experience
                     </div>
                   </div>
 
-                  {/* Specialization */}
+                  {/* Specialization - Fixed Height */}
                   <div className="bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 p-3 rounded-lg border border-indigo-200 dark:border-indigo-800">
                     <p className="text-xs text-gray-600 dark:text-gray-400 mb-1 font-medium">Specialization:</p>
-                    <p className="text-sm text-gray-800 dark:text-gray-200">{member.specialization}</p>
+                    <p className="text-sm text-gray-800 dark:text-gray-200 leading-relaxed min-h-[2.5rem] flex items-center">
+                      {member.specialization}
+                    </p>
                   </div>
+                </div>
 
-                  {/* Contact Info */}
-                  <div className="space-y-2 pt-3 border-t border-gray-200 dark:border-gray-700">
+                {/* Contact Section - Fixed at Bottom */}
+                <div className="mt-auto pt-4 space-y-3 border-t border-gray-200 dark:border-gray-700">
+                  <div className="space-y-2">
                     <div className="flex items-center justify-center text-xs text-gray-600 dark:text-gray-400">
-                      <Mail className="h-3 w-3 mr-2" />
-                      <span className="truncate">{member.email}</span>
+                      <Mail className="h-3 w-3 mr-2 flex-shrink-0" />
+                      <span className="truncate" title={member.email}>{member.email}</span>
                     </div>
                     <div className="flex items-center justify-center text-xs text-gray-600 dark:text-gray-400">
-                      <Phone className="h-3 w-3 mr-2" />
+                      <Phone className="h-3 w-3 mr-2 flex-shrink-0" />
                       <span>{member.phone}</span>
                     </div>
                   </div>
 
-                  {/* Contact Button */}
                   <Button 
                     size="sm" 
-                    className={`w-full bg-gradient-to-r ${staffData[selectedDept]?.color} hover:opacity-90 transition-all duration-300 text-white shadow-md`}
+                    className={`w-full bg-gradient-to-r ${staffData[selectedDept]?.color} hover:opacity-90 transition-all duration-300 text-white shadow-md hover:shadow-lg transform hover:scale-105`}
                   >
                     <Mail className="h-3 w-3 mr-2" />
                     Contact
@@ -428,33 +436,36 @@ export default function Staff() {
 
         {/* No Results */}
         {filteredStaff.length === 0 && searchTerm && (
-          <div className="text-center py-12">
-            <Users className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">No staff members found</h3>
-            <p className="text-gray-600 dark:text-gray-400">
-              Try adjusting your search terms or browse different departments
-            </p>
+          <div className="text-center py-16">
+            <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-8 max-w-md mx-auto shadow-lg">
+              <Users className="h-16 w-16 text-gray-400 mx-auto mb-4" />
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">No staff members found</h3>
+              <p className="text-gray-600 dark:text-gray-400">
+                Try adjusting your search terms or browse different departments
+              </p>
+            </div>
           </div>
         )}
 
         {/* Statistics Footer */}
-        <Card className="mt-12 bg-gradient-to-r from-indigo-600 to-purple-600 text-white border-0">
-          <CardContent className="p-8">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
-              <div>
-                <div className="text-3xl font-bold mb-2">{totalStaff}</div>
+        <Card className="mt-16 bg-gradient-to-r from-indigo-600 to-purple-600 text-white border-0 shadow-2xl overflow-hidden">
+          <CardContent className="p-8 relative">
+            <div className="absolute inset-0 bg-black/10"></div>
+            <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+              <div className="space-y-2">
+                <div className="text-3xl font-bold">{totalStaff}</div>
                 <div className="text-indigo-100">Total Faculty & Staff</div>
               </div>
-              <div>
-                <div className="text-3xl font-bold mb-2">25+</div>
+              <div className="space-y-2">
+                <div className="text-3xl font-bold">25+</div>
                 <div className="text-indigo-100">Average Experience</div>
               </div>
-              <div>
-                <div className="text-3xl font-bold mb-2">5</div>
+              <div className="space-y-2">
+                <div className="text-3xl font-bold">5</div>
                 <div className="text-indigo-100">Ph.D. Holders</div>
               </div>
-              <div>
-                <div className="text-3xl font-bold mb-2">100%</div>
+              <div className="space-y-2">
+                <div className="text-3xl font-bold">100%</div>
                 <div className="text-indigo-100">Qualified Faculty</div>
               </div>
             </div>
