@@ -245,7 +245,10 @@ export default function Committee() {
         <Card className="shadow-2xl border-0 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm">
           <CardHeader className={`bg-gradient-to-r ${committees[selectedCommittee]?.color} text-white rounded-t-lg`}>
             <div className="flex items-center space-x-4">
-              <committees[selectedCommittee].icon className="h-8 w-8" />
+              {(() => {
+                const IconComponent = committees[selectedCommittee].icon;
+                return <IconComponent className="h-8 w-8" />;
+              })()}
               <div>
                 <CardTitle className="text-2xl">{committees[selectedCommittee]?.title}</CardTitle>
                 <p className="text-white/90 mt-2">{committees[selectedCommittee]?.description}</p>
