@@ -4,14 +4,28 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
 import { toast } from "@/components/ui/use-toast";
-import { GraduationCap, FileText, Users, Calendar, CheckCircle } from "lucide-react";
+import {
+  GraduationCap,
+  FileText,
+  Users,
+  Calendar,
+  CheckCircle,
+} from "lucide-react";
 
 export default function Admission() {
-  const [selectedYear, setSelectedYear] = useState<"first" | "second" | null>(null);
+  const [selectedYear, setSelectedYear] = useState<"first" | "second" | null>(
+    null,
+  );
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -27,14 +41,14 @@ export default function Admission() {
 
   const departments = [
     "Computer Engineering",
-    "Electronics and Communications Engineering", 
+    "Electronics and Communications Engineering",
     "Mechanical Engineering",
-    "Electrical and Electronics Engineering"
+    "Electrical and Electronics Engineering",
   ];
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!formData.terms) {
       toast({
         title: "Error",
@@ -47,11 +61,12 @@ export default function Admission() {
     // Simulate form submission
     toast({
       title: "Application Submitted!",
-      description: "Your admission application has been submitted successfully. You will receive a confirmation email shortly.",
+      description:
+        "Your admission application has been submitted successfully. You will receive a confirmation email shortly.",
     });
 
     console.log("Form submitted:", formData);
-    
+
     // Reset form
     setFormData({
       name: "",
@@ -68,7 +83,7 @@ export default function Admission() {
   };
 
   const updateFormData = (field: string, value: string | boolean) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
   return (
@@ -80,19 +95,23 @@ export default function Admission() {
             <GraduationCap className="h-8 w-8 text-white" />
           </div>
           <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            Admission <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Portal</span>
+            Admission{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+              Portal
+            </span>
           </h1>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Join Government Polytechnic College and start your journey towards a successful engineering career
+            Join Government Polytechnic College and start your journey towards a
+            successful engineering career
           </p>
         </div>
 
         {/* Admission Types */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-          <Card 
+          <Card
             className={`cursor-pointer transition-all duration-300 hover:shadow-xl border-2 ${
-              selectedYear === "first" 
-                ? "border-blue-500 shadow-lg bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/30" 
+              selectedYear === "first"
+                ? "border-blue-500 shadow-lg bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/30"
                 : "border-gray-200 dark:border-gray-700 hover:border-blue-300"
             }`}
             onClick={() => setSelectedYear("first")}
@@ -101,11 +120,14 @@ export default function Admission() {
               <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-lg mx-auto mb-4 flex items-center justify-center">
                 <Users className="h-6 w-6 text-white" />
               </div>
-              <CardTitle className="text-xl text-gray-900 dark:text-white">First Year Admission</CardTitle>
+              <CardTitle className="text-xl text-gray-900 dark:text-white">
+                First Year Admission
+              </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-gray-600 dark:text-gray-300 text-center mb-4">
-                For students who have completed 10th standard and want to join directly in the first year
+                For students who have completed 10th standard and want to join
+                directly in the first year
               </p>
               <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
                 <li className="flex items-center">
@@ -124,10 +146,10 @@ export default function Admission() {
             </CardContent>
           </Card>
 
-          <Card 
+          <Card
             className={`cursor-pointer transition-all duration-300 hover:shadow-xl border-2 ${
-              selectedYear === "second" 
-                ? "border-blue-500 shadow-lg bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/30" 
+              selectedYear === "second"
+                ? "border-blue-500 shadow-lg bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/30"
                 : "border-gray-200 dark:border-gray-700 hover:border-blue-300"
             }`}
             onClick={() => setSelectedYear("second")}
@@ -136,11 +158,14 @@ export default function Admission() {
               <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg mx-auto mb-4 flex items-center justify-center">
                 <Calendar className="h-6 w-6 text-white" />
               </div>
-              <CardTitle className="text-xl text-gray-900 dark:text-white">Second Year Admission</CardTitle>
+              <CardTitle className="text-xl text-gray-900 dark:text-white">
+                Second Year Admission
+              </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-gray-600 dark:text-gray-300 text-center mb-4">
-                For students who have completed 12th standard and want to join directly in the second year
+                For students who have completed 12th standard and want to join
+                directly in the second year
               </p>
               <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
                 <li className="flex items-center">
@@ -167,7 +192,8 @@ export default function Admission() {
               <div className="flex items-center space-x-3">
                 <FileText className="h-6 w-6" />
                 <CardTitle className="text-2xl">
-                  {selectedYear === "first" ? "First Year" : "Second Year"} Admission Application
+                  {selectedYear === "first" ? "First Year" : "Second Year"}{" "}
+                  Admission Application
                 </CardTitle>
               </div>
             </CardHeader>
@@ -175,7 +201,12 @@ export default function Admission() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <Label htmlFor="name" className="text-gray-700 dark:text-gray-300 font-medium">Full Name *</Label>
+                    <Label
+                      htmlFor="name"
+                      className="text-gray-700 dark:text-gray-300 font-medium"
+                    >
+                      Full Name *
+                    </Label>
                     <Input
                       id="name"
                       value={formData.name}
@@ -187,7 +218,12 @@ export default function Admission() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="email" className="text-gray-700 dark:text-gray-300 font-medium">Email Address *</Label>
+                    <Label
+                      htmlFor="email"
+                      className="text-gray-700 dark:text-gray-300 font-medium"
+                    >
+                      Email Address *
+                    </Label>
                     <Input
                       id="email"
                       type="email"
@@ -200,7 +236,12 @@ export default function Admission() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="phone" className="text-gray-700 dark:text-gray-300 font-medium">Phone Number *</Label>
+                    <Label
+                      htmlFor="phone"
+                      className="text-gray-700 dark:text-gray-300 font-medium"
+                    >
+                      Phone Number *
+                    </Label>
                     <Input
                       id="phone"
                       value={formData.phone}
@@ -212,14 +253,26 @@ export default function Admission() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="department" className="text-gray-700 dark:text-gray-300 font-medium">Preferred Department *</Label>
-                    <Select value={formData.department} onValueChange={(value) => updateFormData("department", value)}>
+                    <Label
+                      htmlFor="department"
+                      className="text-gray-700 dark:text-gray-300 font-medium"
+                    >
+                      Preferred Department *
+                    </Label>
+                    <Select
+                      value={formData.department}
+                      onValueChange={(value) =>
+                        updateFormData("department", value)
+                      }
+                    >
                       <SelectTrigger className="border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-400">
                         <SelectValue placeholder="Select department" />
                       </SelectTrigger>
                       <SelectContent>
                         {departments.map((dept) => (
-                          <SelectItem key={dept} value={dept}>{dept}</SelectItem>
+                          <SelectItem key={dept} value={dept}>
+                            {dept}
+                          </SelectItem>
                         ))}
                       </SelectContent>
                     </Select>
@@ -227,7 +280,12 @@ export default function Admission() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="address" className="text-gray-700 dark:text-gray-300 font-medium">Address *</Label>
+                  <Label
+                    htmlFor="address"
+                    className="text-gray-700 dark:text-gray-300 font-medium"
+                  >
+                    Address *
+                  </Label>
                   <Textarea
                     id="address"
                     value={formData.address}
@@ -242,11 +300,16 @@ export default function Admission() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <Label className="text-gray-700 dark:text-gray-300 font-medium">
-                      {selectedYear === "first" ? "10th Standard Details" : "12th Standard Details"} *
+                      {selectedYear === "first"
+                        ? "10th Standard Details"
+                        : "12th Standard Details"}{" "}
+                      *
                     </Label>
                     <Input
                       value={formData.previousEducation}
-                      onChange={(e) => updateFormData("previousEducation", e.target.value)}
+                      onChange={(e) =>
+                        updateFormData("previousEducation", e.target.value)
+                      }
                       placeholder={`${selectedYear === "first" ? "School name and board" : "School name and board"}`}
                       required
                       className="border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-400"
@@ -254,7 +317,9 @@ export default function Admission() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label className="text-gray-700 dark:text-gray-300 font-medium">Percentage/CGPA *</Label>
+                    <Label className="text-gray-700 dark:text-gray-300 font-medium">
+                      Percentage/CGPA *
+                    </Label>
                     <Input
                       value={formData.marks}
                       onChange={(e) => updateFormData("marks", e.target.value)}
@@ -270,10 +335,16 @@ export default function Admission() {
                     <Checkbox
                       id="documents"
                       checked={formData.documents}
-                      onCheckedChange={(checked) => updateFormData("documents", !!checked)}
+                      onCheckedChange={(checked) =>
+                        updateFormData("documents", !!checked)
+                      }
                     />
-                    <Label htmlFor="documents" className="text-gray-700 dark:text-gray-300 text-sm">
-                      I confirm that I have all required documents ready for verification
+                    <Label
+                      htmlFor="documents"
+                      className="text-gray-700 dark:text-gray-300 text-sm"
+                    >
+                      I confirm that I have all required documents ready for
+                      verification
                     </Label>
                   </div>
 
@@ -281,17 +352,23 @@ export default function Admission() {
                     <Checkbox
                       id="terms"
                       checked={formData.terms}
-                      onCheckedChange={(checked) => updateFormData("terms", !!checked)}
+                      onCheckedChange={(checked) =>
+                        updateFormData("terms", !!checked)
+                      }
                     />
-                    <Label htmlFor="terms" className="text-gray-700 dark:text-gray-300 text-sm">
-                      I accept the terms and conditions and confirm that all information provided is accurate *
+                    <Label
+                      htmlFor="terms"
+                      className="text-gray-700 dark:text-gray-300 text-sm"
+                    >
+                      I accept the terms and conditions and confirm that all
+                      information provided is accurate *
                     </Label>
                   </div>
                 </div>
 
                 <div className="pt-6">
-                  <Button 
-                    type="submit" 
+                  <Button
+                    type="submit"
                     className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white py-3 text-lg font-semibold shadow-lg"
                     disabled={!formData.terms}
                   >

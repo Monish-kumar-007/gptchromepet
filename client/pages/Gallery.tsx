@@ -2,8 +2,23 @@ import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Camera, Image, Users, Building, Trophy, Calendar, Play, ZoomIn, Filter } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import {
+  Camera,
+  Image,
+  Users,
+  Building,
+  Trophy,
+  Calendar,
+  Play,
+  ZoomIn,
+  Filter,
+} from "lucide-react";
 
 const galleryCategories = [
   { id: "all", name: "All Photos", icon: Image, count: 48 },
@@ -11,7 +26,7 @@ const galleryCategories = [
   { id: "events", name: "Events & Functions", icon: Calendar, count: 12 },
   { id: "students", name: "Student Activities", icon: Users, count: 10 },
   { id: "achievements", name: "Achievements", icon: Trophy, count: 8 },
-  { id: "facilities", name: "Facilities & Labs", icon: Building, count: 12 }
+  { id: "facilities", name: "Facilities & Labs", icon: Building, count: 12 },
 ];
 
 const galleryItems = [
@@ -20,9 +35,10 @@ const galleryItems = [
     id: 1,
     category: "campus",
     title: "Main College Building",
-    description: "Government Polytechnic College main academic building with modern architecture",
+    description:
+      "Government Polytechnic College main academic building with modern architecture",
     type: "image",
-    thumbnail: "campus-1"
+    thumbnail: "campus-1",
   },
   {
     id: 2,
@@ -30,23 +46,25 @@ const galleryItems = [
     title: "College Campus Aerial View",
     description: "Beautiful aerial view of our 17.35 acres campus",
     type: "image",
-    thumbnail: "campus-2"
+    thumbnail: "campus-2",
   },
   {
     id: 3,
     category: "campus",
     title: "College Garden",
-    description: "Lush green gardens providing a peaceful environment for students",
+    description:
+      "Lush green gardens providing a peaceful environment for students",
     type: "image",
-    thumbnail: "campus-3"
+    thumbnail: "campus-3",
   },
   {
     id: 4,
     category: "campus",
     title: "Library Building",
-    description: "State-of-the-art library with extensive collection of books and digital resources",
+    description:
+      "State-of-the-art library with extensive collection of books and digital resources",
     type: "image",
-    thumbnail: "campus-4"
+    thumbnail: "campus-4",
   },
 
   // Events & Functions
@@ -54,9 +72,10 @@ const galleryItems = [
     id: 5,
     category: "events",
     title: "Annual Day Celebration",
-    description: "Students showcasing their talents during annual day cultural programs",
+    description:
+      "Students showcasing their talents during annual day cultural programs",
     type: "image",
-    thumbnail: "event-1"
+    thumbnail: "event-1",
   },
   {
     id: 6,
@@ -64,7 +83,7 @@ const galleryItems = [
     title: "Technical Symposium",
     description: "Inter-college technical symposium with project exhibitions",
     type: "image",
-    thumbnail: "event-2"
+    thumbnail: "event-2",
   },
   {
     id: 7,
@@ -72,15 +91,16 @@ const galleryItems = [
     title: "Graduation Ceremony",
     description: "Proud moment as students receive their diplomas",
     type: "image",
-    thumbnail: "event-3"
+    thumbnail: "event-3",
   },
   {
     id: 8,
     category: "events",
     title: "Independence Day Celebration",
-    description: "Patriotic celebration with flag hoisting and cultural programs",
+    description:
+      "Patriotic celebration with flag hoisting and cultural programs",
     type: "video",
-    thumbnail: "event-4"
+    thumbnail: "event-4",
   },
 
   // Student Activities
@@ -90,7 +110,7 @@ const galleryItems = [
     title: "Study Groups",
     description: "Students collaborating in group study sessions",
     type: "image",
-    thumbnail: "student-1"
+    thumbnail: "student-1",
   },
   {
     id: 10,
@@ -98,7 +118,7 @@ const galleryItems = [
     title: "Sports Day",
     description: "Athletic competitions and sports activities",
     type: "image",
-    thumbnail: "student-2"
+    thumbnail: "student-2",
   },
   {
     id: 11,
@@ -106,7 +126,7 @@ const galleryItems = [
     title: "Cultural Club Performance",
     description: "Students performing traditional dance and music",
     type: "video",
-    thumbnail: "student-3"
+    thumbnail: "student-3",
   },
   {
     id: 12,
@@ -114,7 +134,7 @@ const galleryItems = [
     title: "Student Council Meeting",
     description: "Student representatives discussing college matters",
     type: "image",
-    thumbnail: "student-4"
+    thumbnail: "student-4",
   },
 
   // Achievements
@@ -124,7 +144,7 @@ const galleryItems = [
     title: "Inter-College Competition Winners",
     description: "Our students winning prestigious inter-college competitions",
     type: "image",
-    thumbnail: "achievement-1"
+    thumbnail: "achievement-1",
   },
   {
     id: 14,
@@ -132,15 +152,16 @@ const galleryItems = [
     title: "Best Project Award",
     description: "Final year students receiving awards for innovative projects",
     type: "image",
-    thumbnail: "achievement-2"
+    thumbnail: "achievement-2",
   },
   {
     id: 15,
     category: "achievements",
     title: "Placement Success Stories",
-    description: "Students celebrating their placement offers from top companies",
+    description:
+      "Students celebrating their placement offers from top companies",
     type: "image",
-    thumbnail: "achievement-3"
+    thumbnail: "achievement-3",
   },
 
   // Facilities & Labs
@@ -150,7 +171,7 @@ const galleryItems = [
     title: "Computer Lab",
     description: "Modern computer laboratory with latest systems and software",
     type: "image",
-    thumbnail: "lab-1"
+    thumbnail: "lab-1",
   },
   {
     id: 17,
@@ -158,7 +179,7 @@ const galleryItems = [
     title: "Electronics Lab",
     description: "Well-equipped electronics laboratory for practical learning",
     type: "image",
-    thumbnail: "lab-2"
+    thumbnail: "lab-2",
   },
   {
     id: 18,
@@ -166,7 +187,7 @@ const galleryItems = [
     title: "Mechanical Workshop",
     description: "Comprehensive mechanical workshop with modern machinery",
     type: "image",
-    thumbnail: "lab-3"
+    thumbnail: "lab-3",
   },
   {
     id: 19,
@@ -174,8 +195,8 @@ const galleryItems = [
     title: "Virtual Lab Tour",
     description: "Take a virtual tour of our state-of-the-art laboratories",
     type: "video",
-    thumbnail: "lab-4"
-  }
+    thumbnail: "lab-4",
+  },
 ];
 
 export default function Gallery() {
@@ -183,9 +204,10 @@ export default function Gallery() {
   const [selectedItem, setSelectedItem] = useState<any>(null);
   const [dialogOpen, setDialogOpen] = useState(false);
 
-  const filteredItems = selectedCategory === "all" 
-    ? galleryItems 
-    : galleryItems.filter(item => item.category === selectedCategory);
+  const filteredItems =
+    selectedCategory === "all"
+      ? galleryItems
+      : galleryItems.filter((item) => item.category === selectedCategory);
 
   const openLightbox = (item: any) => {
     setSelectedItem(item);
@@ -201,10 +223,14 @@ export default function Gallery() {
             <Camera className="h-8 w-8 text-white" />
           </div>
           <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            Photo <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">Gallery</span>
+            Photo{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
+              Gallery
+            </span>
           </h1>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Explore our vibrant campus life, memorable events, and academic achievements through this visual journey
+            Explore our vibrant campus life, memorable events, and academic
+            achievements through this visual journey
           </p>
         </div>
 
@@ -223,7 +249,12 @@ export default function Gallery() {
             >
               <category.icon className="h-4 w-4" />
               <span>{category.name}</span>
-              <Badge variant={selectedCategory === category.id ? "secondary" : "outline"} className="ml-2">
+              <Badge
+                variant={
+                  selectedCategory === category.id ? "secondary" : "outline"
+                }
+                className="ml-2"
+              >
                 {category.count}
               </Badge>
             </Button>
@@ -233,8 +264,8 @@ export default function Gallery() {
         {/* Gallery Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12">
           {filteredItems.map((item) => (
-            <Card 
-              key={item.id} 
+            <Card
+              key={item.id}
               className="group cursor-pointer overflow-hidden hover:shadow-xl transition-all duration-300 border-2 hover:border-purple-200 dark:hover:border-purple-700"
               onClick={() => openLightbox(item)}
             >
@@ -257,13 +288,18 @@ export default function Gallery() {
                 <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <div className="text-center text-white">
                     <ZoomIn className="h-8 w-8 mx-auto mb-2" />
-                    <p className="text-sm font-medium">View {item.type === "video" ? "Video" : "Image"}</p>
+                    <p className="text-sm font-medium">
+                      View {item.type === "video" ? "Video" : "Image"}
+                    </p>
                   </div>
                 </div>
 
                 {/* Type Badge */}
                 <div className="absolute top-2 right-2">
-                  <Badge variant="secondary" className="bg-white/90 text-purple-700">
+                  <Badge
+                    variant="secondary"
+                    className="bg-white/90 text-purple-700"
+                  >
                     {item.type === "video" ? (
                       <Play className="h-3 w-3 mr-1" />
                     ) : (
@@ -318,8 +354,8 @@ export default function Gallery() {
               Share Your Memories
             </h3>
             <p className="text-gray-600 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
-              Have photos or videos from college events? We'd love to feature them in our gallery! 
-              Contact us to share your memorable moments.
+              Have photos or videos from college events? We'd love to feature
+              them in our gallery! Contact us to share your memorable moments.
             </p>
             <Button className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700">
               <Camera className="h-4 w-4 mr-2" />
