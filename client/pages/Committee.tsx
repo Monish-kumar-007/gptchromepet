@@ -132,24 +132,28 @@ const committees = {
     ],
     members: [
       {
-        name: "Prof. Kavitha B",
+        name: "Kavitha B",
         designation: "Lecturer - Computer Engineering",
         role: "Presiding Officer",
+        image: "/images/committee/internal-complaints/kavitha.jpg",
       },
       {
-        name: "Prof. Aruna M",
+        name: "Aruna M",
         designation: "Lecturer - Chemistry",
         role: "Member",
+        image: "/images/committee/internal-complaints/aruna.jpg",
       },
       {
         name: "External Expert",
         designation: "Legal Advisor",
         role: "External Member",
+        image: "/images/committee/internal-complaints/empty.png",
       },
       {
         name: "Student Representative",
         designation: "Final Year Student",
         role: "Student Member",
+        image: "/images/committee/internal-complaints/empty.png",
       },
     ],
     contact: {
@@ -176,17 +180,17 @@ const committees = {
     ],
     members: [
       {
-        name: "Dr. Senthil Kumaran S",
+        name: "Senthil Kumaran S",
         designation: "Principal",
         role: "Chairman",
       },
       {
-        name: "Prof. Thangavelu S",
+        name: "Thangavelu S",
         designation: "HOD - ECE",
         role: "Convener",
       },
       {
-        name: "Prof. Kavitha Sridhar B",
+        name: "Kavitha Sridhar B",
         designation: "Lecturer - ECE",
         role: "Member",
       },
@@ -221,12 +225,12 @@ const committees = {
     ],
     members: [
       {
-        name: "Dr. Senthil Kumaran S",
+        name: "Senthil Kumaran S",
         designation: "Principal",
         role: "Chairperson",
       },
       {
-        name: "Prof. Sridhar P",
+        name: "Sridhar P",
         designation: "HOD - Computer Engineering",
         role: "Coordinator",
       },
@@ -261,17 +265,17 @@ const committees = {
     ],
     members: [
       {
-        name: "Prof. Anand S",
+        name: "Anand S",
         designation: "HOD - Mechanical",
         role: "President",
       },
       {
-        name: "Prof. Juliet Thessalonica",
+        name: "Juliet Thessalonica",
         designation: "Lecturer - Computer Engineering",
         role: "Convener",
       },
       {
-        name: "Prof. Priya V",
+        name: "Priya V",
         designation: "Lecturer - Computer Engineering",
         role: "Innovation Ambassador",
       },
@@ -306,17 +310,17 @@ const committees = {
     ],
     members: [
       {
-        name: "Prof. Tamilarasi R",
+        name: "Tamilarasi R",
         designation: "HOD - EEE",
         role: "Chairperson",
       },
       {
-        name: "Prof. Rajarajeshwari V",
+        name: "Rajarajeshwari V",
         designation: "Lecturer - Chemistry",
         role: "Convener",
       },
       {
-        name: "Prof. Kavitha B",
+        name: "Kavitha B",
         designation: "Lecturer - Computer Engineering",
         role: "Member",
       },

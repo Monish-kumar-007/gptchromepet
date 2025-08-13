@@ -246,7 +246,7 @@ const staffData = {
     icon: "🏢",
     staff: [
       {
-        name: "RAJESH KUMAR",
+        name: "NASAR S",
         subject: "Administration",
         education: "M.Com",
         occupation: "Administrative Officer",
@@ -254,27 +254,7 @@ const staffData = {
         phone: "+91 9444012789",
         experience: "15+ Years",
         specialization: "College Administration, Student Affairs",
-      },
-      {
-        name: "PRIYA SHARMA",
-        subject: "Accounts",
-        education: "M.Com, CA",
-        occupation: "Accountant",
-        email: "priya.sharma@gpc.edu.in",
-        phone: "+91 9444123890",
-        experience: "12+ Years",
-        specialization: "Financial Management, Auditing",
-      },
-      {
-        name: "KUMAR RAVI",
-        subject: "Library",
-        education: "M.Lib.Sc",
-        occupation: "Librarian",
-        email: "kumar.ravi@gpc.edu.in",
-        phone: "+91 9444234901",
-        experience: "10+ Years",
-        specialization: "Library Management, Digital Resources",
-      },
+      }
     ],
   },
 };

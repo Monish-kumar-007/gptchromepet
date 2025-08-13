@@ -218,6 +218,17 @@ export default function Footer() {
       <div className="absolute top-10 left-10 w-20 h-20 bg-yellow-400 opacity-10 rounded-full animate-pulse floating-animation"></div>
       <div className="absolute bottom-20 right-20 w-16 h-16 bg-blue-300 opacity-10 rounded-full animate-pulse floating-animation delay-1000"></div>
       <div className="absolute top-1/2 right-10 w-12 h-12 bg-yellow-300 opacity-10 rounded-full animate-pulse floating-animation delay-500"></div>
+
+      {/* Developer Credit Bar */}
+      <div className="relative bg-blue-950 dark:bg-gray-950 border-t border-blue-800 dark:border-gray-800">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-3">
+          <div className="text-center">
+            <p className="text-blue-200 dark:text-gray-400 text-sm font-medium">
+              Developed by <span className="text-yellow-400 font-semibold">MONISH KUMAR S</span> - <span className="text-yellow-400">COMPUTER DEPARTMENT (2023-2026)</span>
+            </p>
+          </div>
+        </div>
+      </div>
     </footer>
   );
 }
