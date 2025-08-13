@@ -46,15 +46,7 @@ const placementStats = [
 
 const placementTeam = [
   {
-    name: "Tmt. KAVITHA B",
-    designation: "Lecturer/CE",
-    role: "Placement Officer",
-    mobile: "9444190646",
-    email: "placement.gptchr@gmail.com",
-    department: "Computer Engineering",
-  },
-  {
-    name: "Tmt. KAVITHA B",
+    name: "Dr.Tmt. KAVITHA B",
     designation: "Lecturer/ECE",
     role: "Placement Coordinator",
     mobile: "9444359441",
@@ -78,7 +70,7 @@ const placementTeam = [
     department: "Electrical & Electronics",
   },
   {
-    name: "Tmt. JULIET THESSALONICA D",
+    name: "Dr.Tmt. JULIET THESSALONICA D",
     designation: "Lecturer/COMPUTER",
     role: "Placement Coordinator",
     mobile: "9444365032",
