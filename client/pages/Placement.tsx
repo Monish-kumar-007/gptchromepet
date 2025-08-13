@@ -15,6 +15,7 @@ import {
   CheckCircle,
   ArrowRight,
   Star,
+  User,
 } from "lucide-react";
 
 const placementStats = [
@@ -52,6 +53,7 @@ const placementTeam = [
     mobile: "9444359441",
     email: "sridhar.kavitha@gmail.com",
     department: "Electronics & Communication",
+    image: "/images/placement-team/kavithaece.jpg",
   },
   {
     name: "Thiru ANAND S",
@@ -60,6 +62,7 @@ const placementTeam = [
     mobile: "7010878240",
     email: "irtanand@gmail.com",
     department: "Mechanical Engineering",
+    image: "/images/placement-team/anand.jpg",
   },
   {
     name: "Tmt. RAJAKUMARI A",
@@ -68,6 +71,7 @@ const placementTeam = [
     mobile: "9445204146",
     email: "rajakumari1996@gmail.com",
     department: "Electrical & Electronics",
+    image: "/images/placement-team/rajakumari.jpg",
   },
   {
     name: "Dr.Tmt. JULIET THESSALONICA D",
@@ -76,22 +80,23 @@ const placementTeam = [
     mobile: "9444365032",
     email: "juliet.jsamuel@gmail.com",
     department: "Computer Engineering",
+    image: "/images/placement-team/juliet.jpg",
   },
 ];
 
 const recruiters = [
-  { name: "Precision Group", sector: "Manufacturing", logo: "precision" },
-  { name: "BK System", sector: "IT Services", logo: "bk-system" },
-  { name: "Apollo Tyres", sector: "Automotive", logo: "apollo" },
-  { name: "Delphi TVS", sector: "Automotive", logo: "delphi" },
-  { name: "K2 Cranes & Components", sector: "Heavy Machinery", logo: "k2" },
-  { name: "Igarashi", sector: "Electronics", logo: "igarashi" },
-  { name: "TAFE", sector: "Agricultural Machinery", logo: "tafe" },
-  { name: "Zauba Corp", sector: "Data Analytics", logo: "zauba" },
-  { name: "Royal Enfield", sector: "Automotive", logo: "royal-enfield" },
-  { name: "TVS", sector: "Automotive", logo: "tvs" },
-  { name: "Jayair", sector: "Aviation", logo: "jayair" },
-  { name: "Autotech", sector: "Automotive", logo: "autotech" },
+  { name: "Precision Group", sector: "Manufacturing", logo: "/images/recuriters/precision.jpeg" },
+  { name: "BK System", sector: "IT Services", logo: "/images/recuriters/bksystem.png" },
+  { name: "Apollo Tyres", sector: "Automotive", logo: "/images/recuriters/apollotyres.png" },
+  { name: "Delphi TVS", sector: "Automotive", logo: "/images/recuriters/delphitvs.jpeg" },
+  { name: "K2 Cranes & Components", sector: "Heavy Machinery", logo: "/images/recuriters/k2cranes.jpeg" },
+  { name: "Igarashi", sector: "Electronics", logo: "/images/recuriters/igarashi.png" },
+  { name: "TAFE", sector: "Agricultural Machinery", logo: "/images/recuriters/tafe.png" },
+  { name: "Zauba Corp", sector: "Data Analytics", logo: "/images/recuriters/zaubacorp.png" },
+  { name: "Royal Enfield", sector: "Automotive", logo: "/images/recuriters/royalenfield.png" },
+  { name: "TVS", sector: "Automotive", logo: "/images/recuriters/tvs.jpeg" },
+  { name: "Jayair", sector: "Aviation", logo: "/images/recuriters/jayair.jpeg" },
+  { name: "Autotech", sector: "Automotive", logo: "/images/recuriters/autotech.jpeg" },
 ];
 
 const placementProcess = [
@@ -122,6 +127,38 @@ const placementProcess = [
     icon: Award,
   },
 ];
+
+// Image component with fallback
+const ImageWithFallback = ({ 
+  src, 
+  alt, 
+  className, 
+  fallbackIcon: FallbackIcon = User 
+}: {
+  src: string;
+  alt: string;
+  className: string;
+  fallbackIcon?: React.ComponentType<{ className?: string }>;
+}) => {
+  const [imageError, setImageError] = useState(false);
+
+  if (imageError) {
+    return (
+      <div className={`${className} bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-600 dark:to-gray-700 flex items-center justify-center`}>
+        <FallbackIcon className="h-8 w-8 text-gray-500 dark:text-gray-400" />
+      </div>
+    );
+  }
+
+  return (
+    <img
+      src={src}
+      alt={alt}
+      className={className}
+      onError={() => setImageError(true)}
+    />
+  );
+};
 
 export default function Placement() {
   const [activeTab, setActiveTab] = useState("overview");
@@ -277,8 +314,13 @@ export default function Placement() {
                     >
                       <CardContent className="p-6">
                         <div className="text-center">
-                          <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-blue-500 rounded-full mx-auto mb-4 flex items-center justify-center">
-                            <Users className="h-8 w-8 text-white" />
+                          <div className="w-20 h-20 mx-auto mb-4 overflow-hidden rounded-full border-4 border-gradient-to-br from-green-500 to-blue-500 shadow-lg">
+                            <ImageWithFallback
+                              src={member.image}
+                              alt={member.name}
+                              className="w-full h-full object-cover"
+                              fallbackIcon={User}
+                            />
                           </div>
                           <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
                             {member.name}
@@ -328,8 +370,13 @@ export default function Placement() {
                       className="hover:shadow-lg transition-all duration-300 border border-gray-200 dark:border-gray-700 group"
                     >
                       <CardContent className="p-6 text-center">
-                        <div className="w-16 h-16 bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-600 dark:to-gray-700 rounded-lg mx-auto mb-4 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-                          <Building2 className="h-8 w-8 text-gray-500 dark:text-gray-400" />
+                        <div className="w-16 h-16 mx-auto mb-4 overflow-hidden rounded-lg group-hover:scale-105 transition-transform duration-300">
+                          <ImageWithFallback
+                            src={company.logo}
+                            alt={`${company.name} logo`}
+                            className="w-full h-full object-contain bg-white dark:bg-gray-100 rounded-lg"
+                            fallbackIcon={Building2}
+                          />
                         </div>
                         <h4 className="font-semibold text-gray-900 dark:text-white mb-2 text-sm">
                           {company.name}
