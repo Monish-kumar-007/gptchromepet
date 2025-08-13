@@ -398,9 +398,59 @@ export default function Staff() {
                 {/* Profile Section - Fixed Height */}
                 <div className="flex flex-col items-center mb-6">
                   <div className="relative mb-4">
-                    <div className="w-20 h-20 bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-600 dark:to-gray-700 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                      <Users className="h-10 w-10 text-gray-500 dark:text-gray-400" />
-                    </div>
+                    {member.name === "SRIDHAR P" ? (
+                      <div className="w-20 h-20 rounded-full overflow-hidden shadow-lg group-hover:scale-110 transition-transform duration-300 border-2 border-gray-200 dark:border-gray-600">
+                        <img 
+                          src="/images/sridhar.png" 
+                          alt="SRIDHAR P - Computer Engineering HOD" 
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    ) : member.name === "KAVITHA B" ? (
+                      <div className="w-20 h-20 rounded-full overflow-hidden shadow-lg group-hover:scale-110 transition-transform duration-300 border-2 border-gray-200 dark:border-gray-600">
+                        <img 
+                          src="/images/kavitha.jpg" 
+                          alt="KAVITHA B - Computer Engineering Lecturer" 
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    ) : member.name === "PRIYA V" ? (
+                      <div className="w-20 h-20 rounded-full overflow-hidden shadow-lg group-hover:scale-110 transition-transform duration-300 border-2 border-gray-200 dark:border-gray-600">
+                        <img 
+                          src="/images/priya.jpg" 
+                          alt="PRIYA V - Computer Engineering Lecturer" 
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    ) : member.name === "JULIET THESSALONICA" ? (
+                      <div className="w-20 h-20 rounded-full overflow-hidden shadow-lg group-hover:scale-110 transition-transform duration-300 border-2 border-gray-200 dark:border-gray-600">
+                        <img 
+                          src="/images/juliet.jpg" 
+                          alt="JULIET THESSALONICA - Computer Engineering Lecturer" 
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    ) : member.name === "MANGA V" ? (
+                      <div className="w-20 h-20 rounded-full overflow-hidden shadow-lg group-hover:scale-110 transition-transform duration-300 border-2 border-gray-200 dark:border-gray-600">
+                        <img 
+                          src="/images/manga.jpg" 
+                          alt="MANGA V - Computer Engineering Lecturer" 
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    ) : member.name === "VAIRAM M" ? (
+                      <div className="w-20 h-20 rounded-full overflow-hidden shadow-lg group-hover:scale-110 transition-transform duration-300 border-2 border-gray-200 dark:border-gray-600">
+                        <img 
+                          src="/images/vairam.jpg" 
+                          alt="VAIRAM M - Computer Engineering Lecturer" 
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    ) : (
+                      <div className="w-20 h-20 bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-600 dark:to-gray-700 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                        <Users className="h-10 w-10 text-gray-500 dark:text-gray-400" />
+                      </div>
+                    )}
                     <div
                       className={`absolute -bottom-2 left-1/2 transform -translate-x-1/2 px-2 py-1 bg-gradient-to-r ${staffData[selectedDept]?.color} text-white text-xs rounded-full shadow-md whitespace-nowrap`}
                     >

@@ -199,27 +199,29 @@ export default function Index() {
             <div className="relative">
               <div className="aspect-[4/3] bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 dark:from-blue-900/30 dark:via-purple-900/30 dark:to-pink-900/30 rounded-3xl shadow-2xl glow-effect floating-animation overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-purple-600/20 to-pink-600/20"></div>
-                <div className="w-full h-full rounded-3xl bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 flex items-center justify-center relative overflow-hidden">
-                  {/* Animated background pattern */}
-                  <div
-                    className={
-                      'absolute inset-0 bg-[url(\'data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.1"%3E%3Ccircle cx="30" cy="30" r="2"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\')] animate-pulse'
-                    }
-                  ></div>
+                <div className="w-full h-full rounded-3xl relative overflow-hidden">
+                  {/* College Campus Image */}
+                  <img 
+                    src="/images/clg.jpg" 
+                    alt="Government Polytechnic College Campus" 
+                    className="w-full h-full object-cover rounded-3xl"
+                  />
+                  
+                  {/* Overlay for better text readability */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent rounded-3xl"></div>
 
-                  <div className="relative text-center text-white z-10">
-                    <GraduationCap className="h-24 w-24 mx-auto mb-4 opacity-90 animate-pulse" />
+                  <div className="absolute bottom-6 left-6 text-white z-10">
                     <p className="text-lg font-semibold">College Campus</p>
-                    <p className="text-sm opacity-75">
+                    <p className="text-sm opacity-90">
                       Beautiful Learning Environment
                     </p>
                   </div>
 
                   {/* Floating icons */}
-                  <div className="absolute top-6 left-6 w-8 h-8 bg-white/20 rounded-full flex items-center justify-center animate-bounce">
+                  <div className="absolute top-6 left-6 w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center animate-bounce">
                     <BookOpen className="h-4 w-4 text-white" />
                   </div>
-                  <div className="absolute bottom-6 right-6 w-8 h-8 bg-white/20 rounded-full flex items-center justify-center animate-bounce delay-500">
+                  <div className="absolute bottom-6 right-6 w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center animate-bounce delay-500">
                     <Users className="h-4 w-4 text-white" />
                   </div>
                 </div>

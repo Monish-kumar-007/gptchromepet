@@ -157,11 +157,13 @@ export default function Footer() {
                 {[1, 2, 3, 4, 5, 6].map((index) => (
                   <div
                     key={index}
-                    className="aspect-square bg-gradient-to-br from-blue-700 to-blue-800 dark:from-gray-700 dark:to-gray-800 rounded-md hover:from-blue-600 hover:to-blue-700 dark:hover:from-gray-600 dark:hover:to-gray-700 transition-all duration-300 cursor-pointer transform hover:scale-105 shadow-md"
+                    className="aspect-square rounded-md overflow-hidden cursor-pointer transform hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg"
                   >
-                    <div className="w-full h-full flex items-center justify-center">
-                      <div className="w-4 h-4 bg-blue-500 dark:bg-gray-500 rounded opacity-50"></div>
-                    </div>
+                    <img
+                      src={`/images/footer-img/f${index}.jpg`}
+                      alt={`Campus photo ${index}`}
+                      className="w-full h-full object-cover hover:opacity-90 transition-opacity duration-300"
+                    />
                   </div>
                 ))}
               </div>
