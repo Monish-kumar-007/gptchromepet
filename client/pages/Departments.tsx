@@ -30,35 +30,35 @@ const departments = {
         subject: "Physics",
         education: "M.Sc, M.phil",
         occupation: "Principal",
-        image: "/placeholder-staff.jpg",
+        image: "/images/department-staff/basic-engineering/senthilkumaran.jpg",
       },
       {
         name: "THANGADURAI .C",
         subject: "Physics",
         education: "M.Sc ., M.Ed., M.Phil",
         occupation: "Lecturer",
-        image: "/placeholder-staff.jpg",
+        image: "/images/department-staff/basic-engineering/thangadurai.jpg",
       },
       {
         name: "Dr.PALANIYAPPA .R",
         subject: "Maths",
         education: "M.Sc., M.Phil, Ph.D",
         occupation: "Lecturer",
-        image: "/placeholder-staff.jpg",
+        image: "/images/department-staff/basic-engineering/palaniyappa.jpg",
       },
       {
         name: "ARUNA .M",
         subject: "Chemistry",
         education: "M.Sc, M.Phil",
         occupation: "Lecturer",
-        image: "/placeholder-staff.jpg",
+        image: "/images/department-staff/basic-engineering/aruna.jpg",
       },
       {
         name: "RAJARAJESHWARI .V",
         subject: "Chemistry",
         education: "M.Sc, M.Phil",
         occupation: "Lecturer",
-        image: "/placeholder-staff.jpg",
+        image: "/images/department-staff/basic-engineering/rajeswari.jpg",
       },
     ],
     subjects: [
@@ -85,42 +85,42 @@ const departments = {
         subject: "Computer Engineering",
         education: "M.E",
         occupation: "HOD",
-        image: "/placeholder-staff.jpg",
+        image: "/images/department-staff/computer-engineering/sridhar.png",
       },
       {
         name: "KAVITHA B",
         subject: "Computer Engineering",
         education: "M.E",
         occupation: "Lecturer",
-        image: "/placeholder-staff.jpg",
+        image: "/images/department-staff/computer-engineering/kavitha.jpg",
       },
       {
         name: "MANGA V",
         subject: "Computer Engineering",
         education: "M.E",
         occupation: "Lecturer",
-        image: "/placeholder-staff.jpg",
+        image: "/images/department-staff/computer-engineering/manga.jpg",
       },
       {
         name: "JULIET THESSALONICA",
         subject: "Computer Engineering",
         education: "M.E",
         occupation: "Lecturer",
-        image: "/placeholder-staff.jpg",
+        image: "/images/department-staff/computer-engineering/juliet.jpg",
       },
       {
         name: "PRIYA V",
         subject: "Computer Engineering",
         education: "M.E",
         occupation: "Lecturer",
-        image: "/placeholder-staff.jpg",
+        image: "/images/department-staff/computer-engineering/priya.jpg",
       },
       {
         name: "VAIRAM M",
         subject: "Computer Engineering",
         education: "I.T.I, NATC, NTC",
         occupation: "Lecturer",
-        image: "/placeholder-staff.jpg",
+        image: "/images/department-staff/computer-engineering/vairam.jpg",
       },
     ],
     subjects: [
@@ -148,21 +148,21 @@ const departments = {
         subject: "Electronics and Communications Engineering",
         education: "M.E",
         occupation: "HOD",
-        image: "/placeholder-staff.jpg",
+        image: "/images/department-staff/electronic-communication-engineering/thangavelu.jpg",
       },
       {
         name: "KAVITHA SRIDHAR B",
         subject: "Electronics and Communications Engineering",
         education: "M.E",
         occupation: "Lecturer",
-        image: "/placeholder-staff.jpg",
+        image: "/images/department-staff/electronic-communication-engineering/kavithasridhar.jpg",
       },
       {
         name: "SAGAYA AROKIARIJ .X",
         subject: "Electronics and Communications Engineering",
         education: "M.E",
         occupation: "Lecturer",
-        image: "/placeholder-staff.jpg",
+        image: "/images/department-staff/electronic-communication-engineering/sagaya.jpg",
       },
     ],
     subjects: [
@@ -190,21 +190,21 @@ const departments = {
         subject: "Electrical and Electronics Engineering",
         education: "M.E",
         occupation: "HOD",
-        image: "/placeholder-staff.jpg",
+        image: "/images/department-staff/electrical-electronic-engineering/tamilarasi.jpg",
       },
       {
         name: "RAJAKUMARI .R",
         subject: "Electrical and Electronics Engineering",
         education: "B.E",
         occupation: "Lecturer",
-        image: "/placeholder-staff.jpg",
+        image: "/images/department-staff/electrical-electronic-engineering/rajakumari.jpg",
       },
       {
         name: "SINGARAM.T",
         subject: "Electrical and Electronics Engineering",
         education: "I.T.I & NTC NATC, M.E",
         occupation: "Lecturer",
-        image: "/placeholder-staff.jpg",
+        image: "/images/department-staff/electrical-electronic-engineering/singaram.jpg",
       },
     ],
     subjects: [
@@ -232,14 +232,14 @@ const departments = {
         subject: "Mechanical Engineering",
         education: "M.E",
         occupation: "HOD",
-        image: "/placeholder-staff.jpg",
+        image: "/images/department-staff/mechanical-engineering/anand.jpg",
       },
       {
         name: "VENKATESAN .J",
         subject: "Mechanical Engineering",
         education: "M.E",
         occupation: "I.T.I & NTC",
-        image: "/placeholder-staff.jpg",
+        image: "/images/department-staff/mechanical-engineering/venkatesan.jpg",
       },
     ],
     subjects: [
@@ -423,8 +423,18 @@ export default function Departments() {
                       className="hover:shadow-lg transition-all duration-300 border border-gray-200 dark:border-gray-700"
                     >
                       <CardContent className="p-6 text-center">
-                        <div className="w-20 h-20 bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-600 dark:to-gray-700 rounded-full mx-auto mb-4 flex items-center justify-center">
-                          <Users className="h-8 w-8 text-gray-500 dark:text-gray-400" />
+                        <div className="w-20 h-20 rounded-full mx-auto mb-4 overflow-hidden shadow-lg border-2 border-gray-200 dark:border-gray-600">
+                          {member.image ? (
+                            <img 
+                              src={member.image} 
+                              alt={`${member.name} - ${member.occupation}`} 
+                              className="w-full h-full object-cover"
+                            />
+                          ) : (
+                            <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-600 dark:to-gray-700 flex items-center justify-center">
+                              <Users className="h-8 w-8 text-gray-500 dark:text-gray-400" />
+                            </div>
+                          )}
                         </div>
                         <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
                           {member.name}

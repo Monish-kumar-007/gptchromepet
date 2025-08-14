@@ -378,59 +378,62 @@ export default function Staff() {
                 {/* Profile Section - Fixed Height */}
                 <div className="flex flex-col items-center mb-6">
                   <div className="relative mb-4">
-                    {member.name === "SRIDHAR P" ? (
-                      <div className="w-20 h-20 rounded-full overflow-hidden shadow-lg group-hover:scale-110 transition-transform duration-300 border-2 border-gray-200 dark:border-gray-600">
-                        <img 
-                          src="/images/sridhar.png" 
-                          alt="SRIDHAR P - Computer Engineering HOD" 
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                    ) : member.name === "KAVITHA B" ? (
-                      <div className="w-20 h-20 rounded-full overflow-hidden shadow-lg group-hover:scale-110 transition-transform duration-300 border-2 border-gray-200 dark:border-gray-600">
-                        <img 
-                          src="/images/kavitha.jpg" 
-                          alt="KAVITHA B - Computer Engineering Lecturer" 
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                    ) : member.name === "PRIYA V" ? (
-                      <div className="w-20 h-20 rounded-full overflow-hidden shadow-lg group-hover:scale-110 transition-transform duration-300 border-2 border-gray-200 dark:border-gray-600">
-                        <img 
-                          src="/images/priya.jpg" 
-                          alt="PRIYA V - Computer Engineering Lecturer" 
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                    ) : member.name === "JULIET THESSALONICA" ? (
-                      <div className="w-20 h-20 rounded-full overflow-hidden shadow-lg group-hover:scale-110 transition-transform duration-300 border-2 border-gray-200 dark:border-gray-600">
-                        <img 
-                          src="/images/juliet.jpg" 
-                          alt="JULIET THESSALONICA - Computer Engineering Lecturer" 
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                    ) : member.name === "MANGA V" ? (
-                      <div className="w-20 h-20 rounded-full overflow-hidden shadow-lg group-hover:scale-110 transition-transform duration-300 border-2 border-gray-200 dark:border-gray-600">
-                        <img 
-                          src="/images/manga.jpg" 
-                          alt="MANGA V - Computer Engineering Lecturer" 
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                    ) : member.name === "VAIRAM M" ? (
-                      <div className="w-20 h-20 rounded-full overflow-hidden shadow-lg group-hover:scale-110 transition-transform duration-300 border-2 border-gray-200 dark:border-gray-600">
-                        <img 
-                          src="/images/vairam.jpg" 
-                          alt="VAIRAM M - Computer Engineering Lecturer" 
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                    ) : (
-                      <div className="w-20 h-20 bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-600 dark:to-gray-700 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                        <Users className="h-10 w-10 text-gray-500 dark:text-gray-400" />
-                      </div>
-                    )}
+                    <div className="w-20 h-20 rounded-full overflow-hidden shadow-lg group-hover:scale-110 transition-transform duration-300 border-2 border-gray-200 dark:border-gray-600">
+                      {(() => {
+                        // Map staff names to their image paths
+                        const imageMap = {
+                          // Basic Engineering
+                          "SENTHIL KUMARAN. S": "/images/department-staff/basic-engineering/senthilkumaran.jpg",
+                          "THANGADURAI .C": "/images/department-staff/basic-engineering/thangadurai.jpg",
+                          "Dr.PALANIYAPPA .R": "/images/department-staff/basic-engineering/palaniyappa.jpg",
+                          "ARUNA .M": "/images/department-staff/basic-engineering/aruna.jpg",
+                          "RAJARAJESHWARI .V": "/images/department-staff/basic-engineering/rajeswari.jpg",
+                          
+                          // Computer Engineering
+                          "SRIDHAR P": "/images/department-staff/computer-engineering/sridhar.png",
+                          "KAVITHA B": "/images/department-staff/computer-engineering/kavitha.jpg",
+                          "MANGA V": "/images/department-staff/computer-engineering/manga.jpg",
+                          "JULIET THESSALONICA": "/images/department-staff/computer-engineering/juliet.jpg",
+                          "PRIYA V": "/images/department-staff/computer-engineering/priya.jpg",
+                          "VAIRAM M": "/images/department-staff/computer-engineering/vairam.jpg",
+                          
+                          // Electronics and Communications Engineering
+                          "THANGAVELU.S": "/images/department-staff/electronic-communication-engineering/thangavelu.jpg",
+                          "KAVITHA SRIDHAR B": "/images/department-staff/electronic-communication-engineering/kavithasridhar.jpg",
+                          "SAGAYA AROKIARIJ .X": "/images/department-staff/electronic-communication-engineering/sagaya.jpg",
+                          
+                          // Electrical and Electronics Engineering
+                          "TAMILARASI .R": "/images/department-staff/electrical-electronic-engineering/tamilarasi.jpg",
+                          "RAJAKUMARI .R": "/images/department-staff/electrical-electronic-engineering/rajakumari.jpg",
+                          "SINGARAM.T": "/images/department-staff/electrical-electronic-engineering/singaram.jpg",
+                          
+                          // Mechanical Engineering
+                          "ANAND S": "/images/department-staff/mechanical-engineering/anand.jpg",
+                          "VENKATESAN .J": "/images/department-staff/mechanical-engineering/venkatesan.jpg",
+                          
+                          // Office Staff
+                          "NASAR S": "/images/department-staff/office/nasar.jpg",
+                        };
+
+                        const imagePath = imageMap[member.name];
+                        
+                        if (imagePath) {
+                          return (
+                            <img 
+                              src={imagePath} 
+                              alt={`${member.name} - ${member.occupation}`} 
+                              className="w-full h-full object-cover"
+                            />
+                          );
+                        } else {
+                          return (
+                            <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-600 dark:to-gray-700 rounded-full flex items-center justify-center">
+                              <Users className="h-10 w-10 text-gray-500 dark:text-gray-400" />
+                            </div>
+                          );
+                        }
+                      })()}
+                    </div>
                     <div
                       className={`absolute -bottom-2 left-1/2 transform -translate-x-1/2 px-2 py-1 bg-gradient-to-r ${staffData[selectedDept]?.color} text-white text-xs rounded-full shadow-md whitespace-nowrap`}
                     >
