@@ -146,7 +146,11 @@ export default function Index() {
                     size="lg"
                     className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-700 hover:from-blue-700 hover:via-purple-700 hover:to-blue-800 text-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 animate-gradient-x"
                   >
-                    <GraduationCap className="w-5 h-5 mr-2" />
+                    <img 
+                      src="/images/clglogo.png" 
+                      alt="Government Polytechnic College Logo" 
+                      className="w-5 h-5 mr-2 object-contain filter brightness-0 invert"
+                    />
                     Apply Now
                   </Button>
                 </Link>

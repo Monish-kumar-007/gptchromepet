@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, GraduationCap, Sun, Moon } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/components/ThemeProvider";
 
@@ -31,8 +31,12 @@ export default function Header() {
           {/* Logo and College Name */}
           <div className="flex items-center space-x-4">
             <Link to="/" className="flex items-center space-x-3 group">
-              <div className="h-12 w-12 bg-gradient-to-br from-blue-600 to-blue-800 dark:from-blue-500 dark:to-blue-700 rounded-lg flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105">
-                <GraduationCap className="h-8 w-8 text-white" />
+              <div className="h-12 w-12 bg-gradient-to-br from-blue-600 to-blue-800 dark:from-blue-500 dark:to-blue-700 rounded-lg flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105 p-1">
+                <img 
+                  src="/images/clglogo.png" 
+                  alt="Government Polytechnic College Logo" 
+                  className="h-10 w-10 object-contain filter brightness-0 invert"
+                />
               </div>
               <div className="hidden sm:block">
                 <h1 className="text-xl font-bold text-blue-900 dark:text-blue-100 leading-tight transition-colors duration-300">
