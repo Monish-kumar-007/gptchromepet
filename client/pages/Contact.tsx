@@ -28,6 +28,13 @@ import {
   MessageSquare,
   Navigation,
 } from "lucide-react";
+import emailjs from "@emailjs/browser";
+
+// Read env for both Next.js and Vite safely
+// EmailJS configuration - Hardcoded values
+const SERVICE_ID = "service_m59y9bc";   // <-- Replace with your actual EmailJS Service ID
+const TEMPLATE_ID = "template_c4q6jwb"; // <-- Replace with your actual EmailJS Template ID
+const PUBLIC_KEY = "mUUV3m42pJYg8vrKk";  // <-- Replace with your actual EmailJS Public Key
 
 const contactInfo = {
   address: {
@@ -90,8 +97,17 @@ const contactReasons = [
   "Other",
 ];
 
+type FormData = {
+  name: string;
+  email: string;
+  phone: string;
+  subject: string;
+  reason: string;
+  message: string;
+};
+
 export default function Contact() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
     phone: "",
@@ -102,19 +118,65 @@ export default function Contact() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const updateFormData = (field: keyof FormData, value: string) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // simple validations
+    if (!formData.name || !formData.email || !formData.subject || !formData.reason || !formData.message) {
+      toast({
+        variant: "destructive",
+        title: "Please fill all required fields.",
+        description: "Name, Email, Reason, Subject, and Message are mandatory.",
+      });
+      return;
+    }
+    // quick email sanity check
+    if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
+      toast({
+        variant: "destructive",
+        title: "Invalid email address.",
+        description: "Please enter a valid email (e.g., name@example.com).",
+      });
+      return;
+    }
+    // env check
+    if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
+      toast({
+        variant: "destructive",
+        title: "Email service not configured.",
+        description: "Missing EmailJS keys. Set them in your .env and reload the app.",
+      });
+      return;
+    }
+
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      phone: formData.phone || "N/A",
+      subject: formData.subject,
+      reason: formData.reason,
+      message: formData.message,
+      // send to college inbox (can also be set inside the template)
+      to_email: "kundukarthi88@gmail.com",
+      to_name: "Government Polytechnic College - Chennai",
+      reply_to: formData.email,
+    };
+
+    try {
+      await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, { publicKey: PUBLIC_KEY });
+
       toast({
         title: "Message Sent Successfully!",
-        description:
-          "Thank you for contacting us. We'll get back to you within 24 hours.",
+        description: "Thank you for contacting us. We'll get back to you within 24 hours.",
       });
 
-      // Reset form
+      // reset form
       setFormData({
         name: "",
         email: "",
@@ -123,13 +185,16 @@ export default function Contact() {
         reason: "",
         message: "",
       });
-
+    } catch (err: any) {
+      console.error("EmailJS error:", err);
+      toast({
+        variant: "destructive",
+        title: "Failed to send message.",
+        description: err?.text || err?.message || "Please try again in a moment.",
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 1500);
-  };
-
-  const updateFormData = (field: string, value: string) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
+    }
   };
 
   return (
@@ -278,7 +343,7 @@ export default function Contact() {
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-8">
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-6" noValidate>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label
