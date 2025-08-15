@@ -1,89 +1,16 @@
-import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Checkbox } from "@/components/ui/checkbox";
-import { toast } from "@/components/ui/use-toast";
 import {
   GraduationCap,
   FileText,
   Users,
   Calendar,
   CheckCircle,
+  ExternalLink,
 } from "lucide-react";
 
 export default function Admission() {
-  const [selectedYear, setSelectedYear] = useState<"first" | "second" | null>(
-    null,
-  );
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    address: "",
-    department: "",
-    previousEducation: "",
-    marks: "",
-    year: "",
-    documents: false,
-    terms: false,
-  });
-
-  const departments = [
-    "Computer Engineering",
-    "Electronics and Communications Engineering",
-    "Mechanical Engineering",
-    "Electrical and Electronics Engineering",
-  ];
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!formData.terms) {
-      toast({
-        title: "Error",
-        description: "Please accept the terms and conditions",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    // Simulate form submission
-    toast({
-      title: "Application Submitted!",
-      description:
-        "Your admission application has been submitted successfully. You will receive a confirmation email shortly.",
-    });
-
-    console.log("Form submitted:", formData);
-
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      address: "",
-      department: "",
-      previousEducation: "",
-      marks: "",
-      year: "",
-      documents: false,
-      terms: false,
-    });
-  };
-
-  const updateFormData = (field: string, value: string | boolean) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
+  const handleAdmissionClick = (admissionType: "first" | "second") => {
+    window.open("https://tnpoly.in/", "_blank");
   };
 
   return (
@@ -109,19 +36,16 @@ export default function Admission() {
         {/* Admission Types */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           <Card
-            className={`cursor-pointer transition-all duration-300 hover:shadow-xl border-2 ${
-              selectedYear === "first"
-                ? "border-blue-500 shadow-lg bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/30"
-                : "border-gray-200 dark:border-gray-700 hover:border-blue-300"
-            }`}
-            onClick={() => setSelectedYear("first")}
+            className="cursor-pointer transition-all duration-300 hover:shadow-xl border-2 border-gray-200 dark:border-gray-700 hover:border-blue-300 group"
+            onClick={() => handleAdmissionClick("first")}
           >
             <CardHeader className="text-center">
-              <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-lg mx-auto mb-4 flex items-center justify-center">
+              <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-lg mx-auto mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                 <Users className="h-6 w-6 text-white" />
               </div>
-              <CardTitle className="text-xl text-gray-900 dark:text-white">
+              <CardTitle className="text-xl text-gray-900 dark:text-white flex items-center justify-center gap-2">
                 First Year Admission
+                <ExternalLink className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -143,23 +67,25 @@ export default function Admission() {
                   Merit-based selection
                 </li>
               </ul>
+              <div className="mt-4 text-center">
+                <p className="text-sm text-blue-600 dark:text-blue-400 font-medium">
+                  Click to apply online →
+                </p>
+              </div>
             </CardContent>
           </Card>
 
           <Card
-            className={`cursor-pointer transition-all duration-300 hover:shadow-xl border-2 ${
-              selectedYear === "second"
-                ? "border-blue-500 shadow-lg bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/30"
-                : "border-gray-200 dark:border-gray-700 hover:border-blue-300"
-            }`}
-            onClick={() => setSelectedYear("second")}
+            className="cursor-pointer transition-all duration-300 hover:shadow-xl border-2 border-gray-200 dark:border-gray-700 hover:border-blue-300 group"
+            onClick={() => handleAdmissionClick("second")}
           >
             <CardHeader className="text-center">
-              <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg mx-auto mb-4 flex items-center justify-center">
+              <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg mx-auto mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                 <Calendar className="h-6 w-6 text-white" />
               </div>
-              <CardTitle className="text-xl text-gray-900 dark:text-white">
+              <CardTitle className="text-xl text-gray-900 dark:text-white flex items-center justify-center gap-2">
                 Second Year Admission
+                <ExternalLink className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -181,207 +107,17 @@ export default function Admission() {
                   Lateral entry program
                 </li>
               </ul>
+              <div className="mt-4 text-center">
+                <p className="text-sm text-blue-600 dark:text-blue-400 font-medium">
+                  Click to apply online →
+                </p>
+              </div>
             </CardContent>
           </Card>
         </div>
 
-        {/* Admission Form */}
-        {selectedYear && (
-          <Card className="max-w-4xl mx-auto shadow-2xl border-0 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
-            <CardHeader className="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-t-lg">
-              <div className="flex items-center space-x-3">
-                <FileText className="h-6 w-6" />
-                <CardTitle className="text-2xl">
-                  {selectedYear === "first" ? "First Year" : "Second Year"}{" "}
-                  Admission Application
-                </CardTitle>
-              </div>
-            </CardHeader>
-            <CardContent className="p-8">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <Label
-                      htmlFor="name"
-                      className="text-gray-700 dark:text-gray-300 font-medium"
-                    >
-                      Full Name *
-                    </Label>
-                    <Input
-                      id="name"
-                      value={formData.name}
-                      onChange={(e) => updateFormData("name", e.target.value)}
-                      placeholder="Enter your full name"
-                      required
-                      className="border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-400"
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label
-                      htmlFor="email"
-                      className="text-gray-700 dark:text-gray-300 font-medium"
-                    >
-                      Email Address *
-                    </Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={(e) => updateFormData("email", e.target.value)}
-                      placeholder="Enter your email"
-                      required
-                      className="border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-400"
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label
-                      htmlFor="phone"
-                      className="text-gray-700 dark:text-gray-300 font-medium"
-                    >
-                      Phone Number *
-                    </Label>
-                    <Input
-                      id="phone"
-                      value={formData.phone}
-                      onChange={(e) => updateFormData("phone", e.target.value)}
-                      placeholder="Enter your phone number"
-                      required
-                      className="border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-400"
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label
-                      htmlFor="department"
-                      className="text-gray-700 dark:text-gray-300 font-medium"
-                    >
-                      Preferred Department *
-                    </Label>
-                    <Select
-                      value={formData.department}
-                      onValueChange={(value) =>
-                        updateFormData("department", value)
-                      }
-                    >
-                      <SelectTrigger className="border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-400">
-                        <SelectValue placeholder="Select department" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {departments.map((dept) => (
-                          <SelectItem key={dept} value={dept}>
-                            {dept}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <Label
-                    htmlFor="address"
-                    className="text-gray-700 dark:text-gray-300 font-medium"
-                  >
-                    Address *
-                  </Label>
-                  <Textarea
-                    id="address"
-                    value={formData.address}
-                    onChange={(e) => updateFormData("address", e.target.value)}
-                    placeholder="Enter your complete address"
-                    required
-                    className="border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-400"
-                    rows={3}
-                  />
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <Label className="text-gray-700 dark:text-gray-300 font-medium">
-                      {selectedYear === "first"
-                        ? "10th Standard Details"
-                        : "12th Standard Details"}{" "}
-                      *
-                    </Label>
-                    <Input
-                      value={formData.previousEducation}
-                      onChange={(e) =>
-                        updateFormData("previousEducation", e.target.value)
-                      }
-                      placeholder={`${selectedYear === "first" ? "School name and board" : "School name and board"}`}
-                      required
-                      className="border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-400"
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label className="text-gray-700 dark:text-gray-300 font-medium">
-                      Percentage/CGPA *
-                    </Label>
-                    <Input
-                      value={formData.marks}
-                      onChange={(e) => updateFormData("marks", e.target.value)}
-                      placeholder="Enter your marks/percentage"
-                      required
-                      className="border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-400"
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-4">
-                  <div className="flex items-center space-x-2">
-                    <Checkbox
-                      id="documents"
-                      checked={formData.documents}
-                      onCheckedChange={(checked) =>
-                        updateFormData("documents", !!checked)
-                      }
-                    />
-                    <Label
-                      htmlFor="documents"
-                      className="text-gray-700 dark:text-gray-300 text-sm"
-                    >
-                      I confirm that I have all required documents ready for
-                      verification
-                    </Label>
-                  </div>
-
-                  <div className="flex items-center space-x-2">
-                    <Checkbox
-                      id="terms"
-                      checked={formData.terms}
-                      onCheckedChange={(checked) =>
-                        updateFormData("terms", !!checked)
-                      }
-                    />
-                    <Label
-                      htmlFor="terms"
-                      className="text-gray-700 dark:text-gray-300 text-sm"
-                    >
-                      I accept the terms and conditions and confirm that all
-                      information provided is accurate *
-                    </Label>
-                  </div>
-                </div>
-
-                <div className="pt-6">
-                  <Button
-                    type="submit"
-                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white py-3 text-lg font-semibold shadow-lg"
-                    disabled={!formData.terms}
-                  >
-                    Submit Application
-                  </Button>
-                </div>
-              </form>
-            </CardContent>
-          </Card>
-        )}
-
         {/* Required Documents */}
-        <Card className="mt-12 bg-gradient-to-br from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 border border-yellow-200 dark:border-yellow-800">
+        <Card className="bg-gradient-to-br from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 border border-yellow-200 dark:border-yellow-800">
           <CardHeader>
             <CardTitle className="text-xl text-gray-900 dark:text-white flex items-center">
               <FileText className="h-5 w-5 mr-2 text-yellow-600" />
